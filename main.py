@@ -838,13 +838,13 @@ def main():
                 eval_metrics = get_metrics(eval_metrics)
                 eval_metrics = jax.tree_map(jnp.mean, eval_metrics)
 
-                eval_metrics.update(bleu_metrics_total)
-                bleu_desc = " ".join([f"BLEU score {key}: {value} |" for key, value in bleu_metrics_total.items()])
+                # eval_metrics.update(bleu_metrics_total)
+                # bleu_desc = " ".join([f"BLEU score {key}: {value} |" for key, value in bleu_metrics_total.items()])
 
                 # Print metrics and update progress bar
                 eval_step_progress_bar.close()
-                epochs.write(f"Eval at Step: {cur_step} (Eval Loss: {eval_metrics['loss']} | {bleu_desc})")
-                # epochs.write(f"Eval at Step: {cur_step} (Eval Loss: {eval_metrics['loss']})")
+                # epochs.write(f"Eval at Step: {cur_step} (Eval Loss: {eval_metrics['loss']} | {bleu_desc})")
+                epochs.write(f"Eval at Step: {cur_step} (Eval Loss: {eval_metrics['loss']})")
 
 
                 # Save metrics
